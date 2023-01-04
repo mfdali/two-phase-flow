@@ -15,6 +15,7 @@ Then it uses Matplotlib to draw the sequence plots or Paraview. Builds GIF with 
 
 ## Scatter plot
 Terzaghi's theory of one-dimensional consolidation
+
 ![](fenics/terzaghi_gif.gif)
 
 # Libraries
