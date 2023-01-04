@@ -151,12 +151,19 @@ solver.parameters["absolute_tolerance"] = 1e-12
 solver.parameters["relative_tolerance"] = 1e-6
 solver.parameters["maximum_iterations"] = 10
 
+# Save fields to post-processing
 u_file = XDMFFile("velocity.xdmf")
 p_file = XDMFFile("pressure.xdmf")
 s_file = XDMFFile("saturation.xdmf")
+# Save saturation at y = 0.5
+data_file_time = open('saturation-time_darcy-two-phase.txt', 'a+')
 
+# Initial time
 t = 0.0
+# Total time
 T = 250*float(dt)
+
+#Solve
 while t < T:
     t += float(dt)
     U0.assign(U)
@@ -168,3 +175,6 @@ while t < T:
     p_file.write(p, t)
     s_file.write(s, t)
     u_file.write(u, t)
+    data_file_time.write("%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g,%.2g\n" % (s((0.00,0.5)),s((0.05,0.5)),s((0.1,0.5)),s((0.15,0.5)),s((0.2,0.5)),s((0.25,0.5)),s((0.3,0.5)),s((0.35,0.5)),s((0.4,0.50)),s((0.45,0.5)),s((0.5,0.5)),s((0.55,0.5)),s((0.6,0.5)),s((0.65,0.5)),s((0.7,0.5)),s((0.75,0.5)),s((0.8,0.5)),s((0.85,0.5)),s((0.9,0.5)),s((0.95,0.5)),s((1.0,0.5))))
+
+data_file_time.close()
