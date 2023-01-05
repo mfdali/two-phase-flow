@@ -11,7 +11,9 @@ Then it uses Matplotlib to draw the sequence plots or Paraview. Builds GIF with 
 ![](fenics/darcy-two-zones_gif.gif)
 
 ## Curve plots
+
 Water front saturation at y = 0.5
+
 ![](fenics/sat_front_gif.gif)
 
 ## Scatter plot
